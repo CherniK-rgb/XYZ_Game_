@@ -1,1 +1,1 @@
-# XYZ_Game_
+# XYZ_Game_Treasure-Hunter
