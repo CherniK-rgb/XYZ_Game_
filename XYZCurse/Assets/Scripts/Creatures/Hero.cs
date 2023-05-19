@@ -89,7 +89,7 @@ namespace Assets.Scripts.Creatures
             return _wallet;
         }
 
-        protected override void TakeDammage()
+        public override void TakeDammage()
         {
             base.TakeDammage();
 
