@@ -25,6 +25,9 @@ namespace Assets.Scripts.Creatures
 
         private readonly Wallet _wallet = new();
 
+        private static readonly int ThrowKey = Animator.StringToHash("throw");
+
+
         private bool _allowDoubleJump;
         private GameSession _session;
 
@@ -39,6 +42,16 @@ namespace Assets.Scripts.Creatures
 
             health.SetHealth(_session.Data.Hp);
             UpdateHeroWeapon();
+        }
+
+        public void OnDoThrow()
+        {
+            _particles.Spawn("Throw");
+        }
+
+        public void Throw()
+        {
+            Animator.SetTrigger(ThrowKey);
         }
 
         public void OnHealthChanged(int currentHealth)

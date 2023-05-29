@@ -20,7 +20,7 @@ TagManager:
   - Trash
   - Enemy
   - Hero
-  - 
+  - Collectables
   - 
   - 
   - 
@@ -58,4 +58,7 @@ TagManager:
     locked: 0
   - name: Hero
     uniqueID: 3337835605
+    locked: 0
+  - name: TileMap
+    uniqueID: 1800065865
     locked: 0

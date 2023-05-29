@@ -12,14 +12,14 @@ namespace Scripts.Component
         {
             foreach (var spawnData in _spawners)
             {
-                spawnData.Component.SpawnParticles();
+                spawnData.Component.Spawn();
             }
         }
 
         public void Spawn(string id)
         {
             var spawner = _spawners.FirstOrDefault(element => element.Id == id);
-            spawner?.Component.SpawnParticles();
+            spawner?.Component.Spawn();
         }
 
         [Serializable]

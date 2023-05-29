@@ -33,6 +33,14 @@ namespace  Assets.Scripts.Creatures
             }
         }
 
+        public void OnThrrow(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                _hero.Throw();
+            }
+        }
+
     }
 }
     

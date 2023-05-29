@@ -8,7 +8,7 @@ public class SpawnComponent : MonoBehaviour
     [SerializeField] private GameObject _prefab;
 
     [ContextMenu("Spawn")] 
-    public void SpawnParticles()
+    public void Spawn()
     {
         var instantiate =  Instantiate(_prefab, _target.position, Quaternion.identity);
         instantiate.transform.localScale = transform.lossyScale; // relatively all scene

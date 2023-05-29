@@ -35,6 +35,7 @@ namespace Assets.Scripts.Creatures
         protected static readonly int Heal = Animator.StringToHash("heal");
         protected static readonly int AttackKey = Animator.StringToHash("attack");
 
+
         protected virtual void Awake()
         {
             Rigidbody = GetComponent<Rigidbody2D>();
