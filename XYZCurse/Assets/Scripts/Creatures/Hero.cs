@@ -18,6 +18,7 @@ namespace Assets.Scripts.Creatures
         [SerializeField] private LayerMask _interactionLayer;
         [SerializeField] private float _interactionRadius;
         [SerializeField] private CheckCircleOverlap _interactionCheck;
+        [SerializeField] private Cooldown _throwCoolDown;
 
 
         [Space] [Header("Particles")] [SerializeField]
@@ -26,7 +27,6 @@ namespace Assets.Scripts.Creatures
         private readonly Wallet _wallet = new();
 
         private static readonly int ThrowKey = Animator.StringToHash("throw");
-
 
         private bool _allowDoubleJump;
         private GameSession _session;
@@ -51,7 +51,11 @@ namespace Assets.Scripts.Creatures
 
         public void Throw()
         {
-            Animator.SetTrigger(ThrowKey);
+            if (_throwCoolDown.IsReady)
+            {
+                Animator.SetTrigger(ThrowKey);
+                _throwCoolDown.Reset();
+            }
         }
 
         public void OnHealthChanged(int currentHealth)
@@ -77,19 +81,19 @@ namespace Assets.Scripts.Creatures
         {
             if (!IsGrounded && _allowDoubleJump)
             {
-                _particles.Spawn("Jump");
                 _allowDoubleJump = false;
+                _particles.Spawn("Jump");
                 return _jumpspeed;
             }
             return base.CalculateJumpVelocity(yVelocite);
         }
-
+        
         private void OnCollisionEnter2D(Collision2D other)
         {
             if (other.gameObject.IsInLayer(_groundLayer))
             {
                 var contact = other.contacts[0];
-                if (contact.relativeVelocity.y >= _jumpspeed)
+                if (contact.relativeVelocity.y < _jumpspeed)
                 {
                     _particles.Spawn("Fall");
                 }

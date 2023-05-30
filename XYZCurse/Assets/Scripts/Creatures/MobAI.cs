@@ -22,6 +22,7 @@ namespace Assets.Scripts
         private Animator _animator;
 
 
+
         private SpawnListComponent _particules;
         private Patrol _patrol;
 
@@ -53,19 +54,24 @@ namespace Assets.Scripts
 
         private IEnumerator AgroToHero()
         {
+            LookAtHero();
             _particules.Spawn("Agro");
 
             yield return new WaitForSeconds(_alarmDelay);
-
             StartState(GoToHero());
-         
         }
+
+        private void LookAtHero()
+        {
+            var direction = GetDirectionToTarget();
+            _creature.SetDirection(Vector2.zero);
+            _creature.UpdateSpriteDirection(direction);
+        }
+
         private IEnumerator GoToHero()
         {
             while (_vision.IsTouchingLayer)
             {
-             
-
                 if (_canAttack.IsTouchingLayer)
                 {
                     StartState(Attack());
@@ -75,9 +81,10 @@ namespace Assets.Scripts
                 {
                     SetDirectionToTarget();
                 }
-
                 yield return null;
             }
+
+            StartState(_patrol.DoPatrol());
         }
 
         private IEnumerator Attack()
@@ -91,9 +98,8 @@ namespace Assets.Scripts
 
         private void SetDirectionToTarget()
         {
-            var direction = _target.transform.position - transform.position;
-            direction.y = 0;
-            _creature.SetDirection(direction.normalized);
+            var direction = GetDirectionToTarget();
+            _creature.SetDirection(direction);
         }
 
         private void StartState(IEnumerator coroutine)
@@ -110,9 +116,19 @@ namespace Assets.Scripts
         {
             _isDead = true;
             _animator.SetBool(IsDeadKey, true);
+            _creature.SetDirection(Vector2.zero);
+            gameObject.layer = LayerMask.NameToLayer("Trash");
+
 
             if (_current != null) 
                 StopCoroutine(_current);
+        }
+
+        public Vector2 GetDirectionToTarget()
+        {
+            var direction = _target.transform.position - transform.position;
+            direction.y = 0;
+            return direction.normalized;
         }
     }
 }

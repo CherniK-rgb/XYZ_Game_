@@ -983,6 +983,18 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.36747152
       objectReference: {fileID: 0}
+    - target: {fileID: 350941577261308331, guid: 01c9bce9b5336bf42bc157329c33e27f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 350941577261308331, guid: 01c9bce9b5336bf42bc157329c33e27f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.532
+      objectReference: {fileID: 0}
+    - target: {fileID: 350941577261308331, guid: 01c9bce9b5336bf42bc157329c33e27f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.06
+      objectReference: {fileID: 0}
     - target: {fileID: 350941577918260224, guid: 01c9bce9b5336bf42bc157329c33e27f, type: 3}
       propertyPath: m_Name
       value: Sharky
@@ -12216,6 +12228,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 350941577097630818, guid: e8416845c1959d44bbb9c30da3294a1b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.263
+      objectReference: {fileID: 0}
     - target: {fileID: 350941577918260224, guid: e8416845c1959d44bbb9c30da3294a1b, type: 3}
       propertyPath: m_Name
       value: Hero
@@ -12263,6 +12279,10 @@ PrefabInstance:
     - target: {fileID: 350941577918260226, guid: e8416845c1959d44bbb9c30da3294a1b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 350941577918260348, guid: e8416845c1959d44bbb9c30da3294a1b, type: 3}
+      propertyPath: _throwCoolDown._values
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8416845c1959d44bbb9c30da3294a1b, type: 3}

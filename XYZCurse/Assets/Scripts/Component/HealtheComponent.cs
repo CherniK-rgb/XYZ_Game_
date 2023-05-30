@@ -13,9 +13,10 @@ namespace Scripts.Component
         [SerializeField] private UnityEvent _onDie;
         [SerializeField] private HealthChangeEvent _onChange;
 
-
         public void ModifyHealth(int healthDelta)
         {
+            if (_health <= 0) return;
+      
             _health += healthDelta;
 
             _onChange?.Invoke(_health);
