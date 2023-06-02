@@ -171,9 +171,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.013084352, y: 0.10176793}
+  m_Offset: {x: 0.020217836, y: 0.08512321}
   serializedVersion: 2
-  m_Radius: 0.27406338
+  m_Radius: 0.2597964
 --- !u!114 &350941577055291494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,7 +215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 350941577097630817}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.025, z: 0}
+  m_LocalPosition: {x: 0, y: -0.263, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5215,7 +5215,6 @@ GameObject:
   - component: {fileID: 350941577918260350}
   - component: {fileID: 350941577918260344}
   - component: {fileID: 350941577918260345}
-  - component: {fileID: 350941577918260346}
   - component: {fileID: 6615933113629296982}
   m_Layer: 11
   m_Name: Hero
@@ -5326,7 +5325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _invertScale: 0
   _speed: 4
-  _jumpspeed: 20
+  _jumpspeed: 15
   _damageVelocity: 15
   _damage: 1
   _groundLayer:
@@ -5335,7 +5334,7 @@ MonoBehaviour:
   _groundCheck: {fileID: 350941577055291494}
   _attackRange: {fileID: 6445177540782191744}
   _particles: {fileID: 6615933113629296982}
-  _limitFallVfx: 12
+  _limitFallVfx: 1
   _armed: {fileID: 9100000, guid: 1a9a321d950e2c442bb16c961e7d7e4a, type: 2}
   _unarmed: {fileID: 9100000, guid: 59087f86ee598c74e9fedded8841a3f3, type: 2}
   _interactionLayer:
@@ -5343,7 +5342,8 @@ MonoBehaviour:
     m_Bits: 0
   _interactionRadius: 1
   _interactionCheck: {fileID: 1332053253157295835}
-  _throwCoolDown: {fileID: 0}
+  _throwCoolDown:
+    _values: 0.5
   _hitParticles: {fileID: 350941577384386697}
 --- !u!114 &350941577918260349
 MonoBehaviour:
@@ -5451,10 +5451,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 2
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
@@ -5554,36 +5554,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &350941577918260346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 350941577918260224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0075f7c56f0b92b4ca3703a71d693721, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _frameRate: 10
-  _onComplete:
-    m_PersistentCalls:
-      m_Calls: []
-  _clips:
-  - _name: run
-    _sprites:
-    - {fileID: 21300000, guid: a94dd89a461def84e82e022620a11815, type: 3}
-    - {fileID: 21300000, guid: 58e667ea83f1e50489ae5c74da84f61e, type: 3}
-    - {fileID: 21300000, guid: e62499d5f389b944b9f2b3db8c21019a, type: 3}
-    - {fileID: 21300000, guid: f18ade237f4074844930d70dd960b3f5, type: 3}
-    - {fileID: 21300000, guid: 94863b0241c68a04aabe5abcfcd6bd64, type: 3}
-    - {fileID: 21300000, guid: 9b9a922cae8b0f24f8df0565719a45c0, type: 3}
-    _loop: 0
-    _allowNextClip: 0
-    _onComplete:
-      m_PersistentCalls:
-        m_Calls: []
 --- !u!114 &6615933113629296982
 MonoBehaviour:
   m_ObjectHideFlags: 0
