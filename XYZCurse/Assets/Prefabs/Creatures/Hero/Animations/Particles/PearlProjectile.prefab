@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -4042045263711688856}
   - component: {fileID: 6052753240434863824}
   - component: {fileID: -2181579262072009789}
+  - component: {fileID: 8305154691691297437}
   m_Layer: 0
   m_Name: PearlProjectile
   m_TagString: Untagged
@@ -139,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea44b7ea49ff14b4a8fa9147862864df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1
+  _speed: 4
   _invert: 1
 --- !u!114 &-4042045263711688856
 MonoBehaviour:
@@ -210,3 +211,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectToDestroy: {fileID: 4799218926300928103}
+--- !u!114 &8305154691691297437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4799218926300928103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21ca3e50869deea4d9ba44e02425f559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 0.2
+  _invert: 1
+  _frequency: 10
+  _amplitude: 0.3

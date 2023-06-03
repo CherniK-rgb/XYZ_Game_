@@ -2,19 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectTile : MonoBehaviour
+namespace Assets.Scripts.Creatures.Weapon
 {
-    [SerializeField] private float _speed;
-    [SerializeField] private bool _invert;
-
-    private int _direction;
-    private Rigidbody2D _rigidbody;
-    private void Start()
+    public class ProjectTile : BasedProjectiles
     {
-        var mod = _invert ? -1 : 1;
-        _direction = mod * transform.lossyScale.x > 0 ? 1 : -1;
-        _rigidbody = GetComponent<Rigidbody2D>();
-        var force = new Vector2(_direction * _speed, 0);
-        _rigidbody.AddForce(force, ForceMode2D.Impulse);
+        protected override void Start()
+        {
+            base.Start();
+
+            var force = new Vector2(Direction * _speed, 0);
+            Rigidbody.AddForce(force, ForceMode2D.Impulse);
+        }
     }
 }

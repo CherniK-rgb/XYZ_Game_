@@ -10,13 +10,16 @@ GameObject:
   m_Component:
   - component: {fileID: 7660068346445170087}
   - component: {fileID: 7660068346445170106}
-  - component: {fileID: 7660068346445170085}
+  - component: {fileID: 7428154109186677883}
   - component: {fileID: 7660068346445170084}
   - component: {fileID: 7660068346445170107}
+  - component: {fileID: 6314935696496106152}
   - component: {fileID: 5677951264501778351}
-  m_Layer: 13
+  - component: {fileID: 1750139820479058679}
+  - component: {fileID: 4608632068201341383}
+  m_Layer: 10
   m_Name: Seashell
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +31,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7660068346445170086}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.75, y: 0.19, z: 9.869259}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -91,7 +94,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &7660068346445170085
+--- !u!50 &7428154109186677883
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -148,6 +151,76 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &6314935696496106152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7660068346445170086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de7290bb73dc71145bb133321d58a58f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 2
+  _onDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Assets.Scripts.Creatures.Hero, Assembly-CSharp
+        m_MethodName: TakeDammage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7660068346445170107}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: hit
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onDie:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4608632068201341383}
+        m_TargetAssemblyTypeName: SpawnComponent, Assembly-CSharp
+        m_MethodName: Spawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1750139820479058679}
+        m_TargetAssemblyTypeName: Script.Components.DestroyObjectComponent, Assembly-CSharp
+        m_MethodName: DestroyObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5677951264501778351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,10 +237,37 @@ MonoBehaviour:
   _cooldownMelee:
     _values: 2
   _meleeAttack: {fileID: 7660068347518985879}
-  __meleecanAttack: {fileID: 7660068347518985872}
+  _meleeCanAttack: {fileID: 7660068347518985872}
   _rangeAttack: {fileID: 7660068348133694175}
   _rangeCooldown:
     _values: 2
+--- !u!114 &1750139820479058679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7660068346445170086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9d39cd6d52fb22419b802a4ca0008c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectToDestroy: {fileID: 7660068346445170086}
+--- !u!114 &4608632068201341383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7660068346445170086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e1444ca1d2edf488253fc48cad1041, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 7660068346445170087}
+  _prefab: {fileID: 1684161937805781903, guid: 68b66793016e78e4f8e57e2cd720713d, type: 3}
 --- !u!1 &7660068346703743237
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +280,7 @@ GameObject:
   - component: {fileID: 7660068346703743257}
   - component: {fileID: 7660068346703743256}
   - component: {fileID: 7660068346703743259}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Vision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -288,7 +388,7 @@ GameObject:
   - component: {fileID: 7660068347518985878}
   - component: {fileID: 7660068347518985873}
   - component: {fileID: 7660068347518985872}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Attack Range
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -398,7 +498,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7660068348133694174}
   - component: {fileID: 7660068348133694175}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: ThrowPearlPosition
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -413,7 +513,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7660068348133694169}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.0791473, y: -0.1623053, z: 0.020349002}
+  m_LocalPosition: {x: -0.39, y: -0.32, z: 0.020349002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
