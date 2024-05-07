@@ -80,12 +80,12 @@ namespace Assets.Scripts.Creatures
             {
                 IsJumping = true;
 
-                var isFalling = yVelocity <= 0.001f;
+                var isFalling = Rigidbody.velocity.y <= 0.001f;
                 yVelocity = isFalling ? CalculateJumpVelocity(yVelocity) : yVelocity;
             }
             else if (Rigidbody.velocity.y > 0 && IsJumping)
             {
-                yVelocity = Rigidbody.velocity.y * -1 ;
+                yVelocity *= 0.5f;
             }
 
             return yVelocity;

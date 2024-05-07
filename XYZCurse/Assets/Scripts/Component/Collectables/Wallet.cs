@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Scripts.Component
 {
-    public class Wallet
+    /*public class Wallet
     {
         private Dictionary<CoinType, int> _state = new Dictionary<CoinType, int>();
         public int count;
@@ -34,5 +34,5 @@ namespace Scripts.Component
     {
         GOLD,
         SILVER
-    }
+    }*/
 }

@@ -11,6 +11,10 @@ public class SpawnComponent : MonoBehaviour
     public void Spawn()
     {
         var instantiate =  Instantiate(_prefab, _target.position, Quaternion.identity);
-        instantiate.transform.localScale = transform.lossyScale; // relatively all scene
+
+        var scale = transform.lossyScale;
+        instantiate.transform.localScale = scale; // relatively all scene
+        instantiate.SetActive(true);
+        
     }
 }

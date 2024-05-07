@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 1793680910207956939}
   - component: {fileID: 2979161897370403747}
   - component: {fileID: 2794906398343223837}
-  - component: {fileID: 6456024348864074817}
   m_Layer: 12
   m_Name: StukedSword
   m_TagString: Untagged
@@ -195,11 +194,11 @@ MonoBehaviour:
   _tag: Player
   _layer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147483647
   _action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6456024348864074817}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Assets.Scripts.Creatures.ArmHeroComponent, Assembly-CSharp
         m_MethodName: ArmHero
         m_Mode: 0
@@ -223,15 +222,3 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6456024348864074817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2070292556179081056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1f5371eec5c0e24095f103b10283999, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5677951264501778351}
   - component: {fileID: 1750139820479058679}
   - component: {fileID: 4608632068201341383}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: Seashell
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -128,8 +128,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.024591776, y: -0.26558915}
-  m_Size: {x: 1.0180106, y: 0.65632635}
+  m_Offset: {x: 0.03185535, y: -0.2637731}
+  m_Size: {x: 0.9962216, y: 0.63816816}
   m_Direction: 1
 --- !u!95 &7660068346445170107
 Animator:
@@ -167,8 +167,8 @@ MonoBehaviour:
   _onDamage:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Assets.Scripts.Creatures.Hero, Assembly-CSharp
+      - m_Target: {fileID: 5677951264501778351}
+        m_TargetAssemblyTypeName: ShootingMobAI, Assembly-CSharp
         m_MethodName: TakeDammage
         m_Mode: 1
         m_Arguments:
@@ -176,19 +176,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7660068346445170107}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: SetTrigger
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: hit
+          m_StringArgument: hitSeaShell
           m_BoolArgument: 0
         m_CallState: 2
   _onDie:
@@ -280,13 +268,13 @@ GameObject:
   - component: {fileID: 7660068346703743257}
   - component: {fileID: 7660068346703743256}
   - component: {fileID: 7660068346703743259}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: Vision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7660068346703743258
 Transform:
   m_ObjectHideFlags: 0
@@ -388,13 +376,13 @@ GameObject:
   - component: {fileID: 7660068347518985878}
   - component: {fileID: 7660068347518985873}
   - component: {fileID: 7660068347518985872}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: Attack Range
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7660068347518985875
 Transform:
   m_ObjectHideFlags: 0
@@ -498,13 +486,13 @@ GameObject:
   m_Component:
   - component: {fileID: 7660068348133694174}
   - component: {fileID: 7660068348133694175}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: ThrowPearlPosition
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7660068348133694174
 Transform:
   m_ObjectHideFlags: 0

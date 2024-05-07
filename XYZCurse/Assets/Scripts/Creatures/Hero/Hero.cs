@@ -1,6 +1,8 @@
+using System;
 using Assets.Model;
 using Assets.Scripts.Creatures;
 using Assets.Scripts.Utils;
+using Model.Data;
 using Scripts.Component;
 using UnityEditor.Animations;
 using UnityEngine;
@@ -12,8 +14,8 @@ namespace Assets.Scripts.Creatures
     {
         [SerializeField] private float _limitFallVfx;
 
-        [SerializeField] private AnimatorController _armed;
-        [SerializeField] private AnimatorController _unarmed;
+        [SerializeField] private RuntimeAnimatorController _armed;
+        [SerializeField] private RuntimeAnimatorController _unarmed;
 
         [SerializeField] private LayerMask _interactionLayer;
         [SerializeField] private float _interactionRadius;
@@ -24,12 +26,15 @@ namespace Assets.Scripts.Creatures
         [Space] [Header("Particles")] [SerializeField]
         private ParticleSystem _hitParticles;
 
-        private readonly Wallet _wallet = new();
+        //private readonly Wallet _wallet = new();
 
         private static readonly int ThrowKey = Animator.StringToHash("throw");
 
         private bool _allowDoubleJump;
         private GameSession _session;
+        
+        private  int CoinsCount => _session.Data.Inventory.Count("Coin");
+        private  int SwordCount => _session.Data.Inventory.Count("Sword");
 
         protected override void Awake()
         {
@@ -39,9 +44,20 @@ namespace Assets.Scripts.Creatures
         {
             _session = FindObjectOfType<GameSession>();
             var health = GetComponent<HealtheComponent>();
-
+            _session.Data.Inventory.OnChanged += OnInventoryChanged;
+            
             health.SetHealth(_session.Data.Hp);
             UpdateHeroWeapon();
+        }
+
+        private void OnDestroy()
+        {
+            _session.Data.Inventory.OnChanged -= OnInventoryChanged;
+        }
+
+        private void OnInventoryChanged(string id, int value)
+        {
+            if(id == "Sword") UpdateHeroWeapon();
         }
 
         public void OnDoThrow()
@@ -93,31 +109,32 @@ namespace Assets.Scripts.Creatures
             if (other.gameObject.IsInLayer(_groundLayer))
             {
                 var contact = other.contacts[0];
-                if (contact.relativeVelocity.y < _jumpspeed)
+                if (contact.relativeVelocity.y < _limitFallVfx)
                 {
-                    _particles.Spawn("Fall");
+                   //_particles.Spawn("Fall");
                 }
             }
         }
 
-        public Wallet GetWallet()
+        public void AddInventory(string id, int value)
         {
-            _session.Data.Coins += 1;
-            return _wallet;
+            _session.Data.Inventory.Add(id, value);
         }
-
+        
         public override void TakeDammage()
         {
             base.TakeDammage();
-
-            if (_session.Data.Coins > 0) LoseCoins();
+            if (CoinsCount > 0)
+            {
+                LoseCoins();
+            }
         }
 
         private void LoseCoins()
         {
-            var numCoinsToDispose = Mathf.Min(_session.Data.Coins, 5);
-            _session.Data.Coins -= numCoinsToDispose;
-
+            var numCoinsToDispose = Mathf.Min(CoinsCount, 5);
+            _session.Data.Inventory.Remove("Coin", numCoinsToDispose);
+            
             var burst = _hitParticles.emission.GetBurst(0);
             burst.count = numCoinsToDispose;
             _hitParticles.emission.SetBurst(0, burst);
@@ -135,24 +152,17 @@ namespace Assets.Scripts.Creatures
         {
             _interactionCheck.Check();
         }
-
+       
         public override void Attack()
         {
-            if (!_session.Data.IsArmed) return;
+            if (SwordCount <= 0) return;
 
             base.Attack();
         }
-
-        internal void ArmHero()
-        {
-            _session.Data.IsArmed = true;
-            UpdateHeroWeapon();
-            Animator.runtimeAnimatorController = _armed;
-        }
-
+        
         public void UpdateHeroWeapon()
         {
-            Animator.runtimeAnimatorController = _session.Data.IsArmed ? _armed : _unarmed;
+            Animator.runtimeAnimatorController = SwordCount > 0 ? _armed : _unarmed;
         }
     }
 }

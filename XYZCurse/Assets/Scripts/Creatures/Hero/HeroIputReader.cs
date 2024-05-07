@@ -6,6 +6,7 @@ namespace  Assets.Scripts.Creatures
     public class HeroIputReader : MonoBehaviour
     {
         private Hero _hero;
+        
         private void Awake()
         {
             _hero = GetComponent<Hero>();

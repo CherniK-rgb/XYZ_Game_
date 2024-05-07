@@ -9,8 +9,8 @@ namespace Script.Components
         public void Reload()
         {
             var session = FindObjectOfType<GameSession>();
-            DestroyImmediate(session);
-
+            session.LoadLastSave();
+            
             var scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
         }

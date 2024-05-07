@@ -24,7 +24,7 @@ TagManager:
   - Seashell
   - Collectables
   - Checkers
-  - 
+  - ColladebleEnemies
   - 
   - 
   - 
@@ -61,4 +61,7 @@ TagManager:
     locked: 0
   - name: TileMap
     uniqueID: 1800065865
+    locked: 0
+  - name: Creatures
+    uniqueID: 1091340155
     locked: 0

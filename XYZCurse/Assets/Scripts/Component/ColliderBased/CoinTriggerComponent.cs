@@ -5,7 +5,7 @@ using Assets.Scripts.Creatures;
 
 namespace Assets.Scripts.Component
 {
-    public class CoinTriggerComponent : MonoBehaviour
+    /*public class CoinTriggerComponent : MonoBehaviour
     {
         [SerializeField] private string _tag;
         [SerializeField] private UnityEvent _action;
@@ -23,6 +23,6 @@ namespace Assets.Scripts.Component
                 _action?.Invoke();
             }
         }
-    }
+    }*/
 }
 
